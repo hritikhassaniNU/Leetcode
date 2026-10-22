@@ -1,0 +1,18 @@
+def groupAnagrams(strs):
+    groups = {}
+
+    for word in strs:
+        counts = [0] * 26
+
+        for char in word:
+            index = ord(char) - ord('a')
+            counts[index] += 1
+
+        key = tuple(counts)
+
+        if key not in groups:
+            groups[key] = []
+
+        groups[key].append(word)
+
+    return list(groups.values())
